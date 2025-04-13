@@ -5,3 +5,7 @@ export type ButtonProps = {
    leftIcon?: React.ReactNode;
    btnClass?: string;
 };
+export type AnimatedTitleProps = {
+   title: string;
+   containerClass?: string;
+};

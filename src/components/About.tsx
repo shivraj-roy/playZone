@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedTitle from "../ui/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,11 +31,10 @@ const About = () => {
             <h2 className="font-general text-sm uppercase md:text-[10px]">
                Welcome to PlayZone
             </h2>
-            <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">
-               Disc<b>o</b>ver the <br />
-               <b>g</b>reatest <br />
-               <b>e</b>ntertainment
-            </div>
+            <AnimatedTitle
+               title="Disc<b>o</b>ver the <br /><b>g</b>reatest <br /><b>e</b>ntertainment"
+               containerClass="mt-5 text-center !text-black"
+            />
             <div className="about-subtext">
                <p>
                   PlayZone is a platform that brings together gamers from
