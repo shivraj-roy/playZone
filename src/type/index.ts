@@ -1,3 +1,5 @@
+import React from "react";
+
 export type ButtonProps = {
    title: string;
    id?: string;
@@ -8,4 +10,15 @@ export type ButtonProps = {
 export type AnimatedTitleProps = {
    title: string;
    containerClass?: string;
+};
+
+export type BentoCardProps = {
+   src: string;
+   title: React.ReactNode;
+   description?: string;
+};
+
+export type BentoTiltProps = {
+   children: React.ReactNode;
+   className?: string;
 };
