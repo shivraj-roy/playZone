@@ -1,15 +1,45 @@
+import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "../ui/Button";
+import { useWindowScroll } from "react-use";
 
 const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
 
 const Navbar = () => {
    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
    const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+   const [isNavVisible, setIsNavVisible] = useState(true);
+   const [lastScroll, setLastScroll] = useState(0);
    const navBarRef = useRef<HTMLDivElement>(null);
    const audioRef = useRef<HTMLAudioElement>(null);
+
+   const { y: currentScrollY } = useWindowScroll();
+
+   useEffect(() => {
+      if (currentScrollY === 0) {
+         setIsNavVisible(true);
+         navBarRef.current?.classList.remove("floating-nav");
+      } else if (currentScrollY > lastScroll) {
+         setIsNavVisible(false);
+         navBarRef.current?.classList.add("floating-nav");
+      } else if (currentScrollY < lastScroll) {
+         setIsNavVisible(true);
+         navBarRef.current?.classList.add("floating-nav");
+      }
+
+      setLastScroll(currentScrollY);
+   }, [currentScrollY, lastScroll]);
+
+   useEffect(() => {
+      gsap.to(navBarRef.current, {
+         y: isNavVisible ? 0 : -200,
+         opacity: isNavVisible ? 1 : 0,
+         duration: 0.3,
+         ease: "power2.out",
+      });
+   }, [isNavVisible]);
 
    const handleToggleAudio = () => {
       setIsAudioPlaying((prev) => !prev);
