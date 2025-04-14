@@ -10,6 +10,7 @@ export type ButtonProps = {
 export type AnimatedTitleProps = {
    title: string;
    containerClass?: string;
+   sectionId?: string;
 };
 
 export type BentoCardProps = {

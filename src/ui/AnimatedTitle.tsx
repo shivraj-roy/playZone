@@ -3,7 +3,11 @@ import gsap from "gsap";
 
 import { AnimatedTitleProps } from "../type";
 
-const AnimatedTitle = ({ title, containerClass }: AnimatedTitleProps) => {
+const AnimatedTitle = ({
+   title,
+   containerClass,
+   sectionId,
+}: AnimatedTitleProps) => {
    const containerRef = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
@@ -30,7 +34,11 @@ const AnimatedTitle = ({ title, containerClass }: AnimatedTitleProps) => {
    }, []);
 
    return (
-      <div className={`animated-title ${containerClass}`} ref={containerRef}>
+      <div
+         id={sectionId}
+         className={`animated-title ${containerClass}`}
+         ref={containerRef}
+      >
          {title.split("<br />").map((line, index) => (
             <div
                key={index}
